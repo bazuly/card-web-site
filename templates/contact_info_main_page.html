@@ -1,0 +1,22 @@
+<!-- templates/contact_info_main_page.html -->
+{% extends 'index.html' %}
+
+{% block title %}Contact - My Portfolio{% endblock %}
+
+{% block content %}
+    <h1>Contact Information</h1>
+    <div class="contact-info">
+        {% for item in contact %}
+            <div class="contact-item">
+                <p><strong>Name:</strong> {{ item.name }}</p>
+                <p><strong>Email:</strong> {{ item.email }}</p>
+                {% if item.phone %}
+                    <p><strong>Phone:</strong> {{ item.phone }}</p>
+                {% endif %}
+                {% if item.address %}
+                    <p><strong>Address:</strong> {{ item.address }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

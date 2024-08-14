@@ -1,0 +1,23 @@
+<!-- templates/project_main_page.html -->
+{% extends 'index.html' %}
+
+{% block title %}Projects - My Portfolio{% endblock %}
+
+{% block content %}
+    <h1>Projects</h1>
+    <div class="projects">
+        {% for project in projects %}
+            <div class="project">
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% if project.video %}
+                    <video controls>
+                        <source src="{{ project.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

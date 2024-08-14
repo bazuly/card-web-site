@@ -1,0 +1,17 @@
+<!-- templates/resume_info_main_page.html -->
+{% extends 'index.html' %}
+
+{% block title %}Resume - My Portfolio{% endblock %}
+
+{% block content %}
+    <h1>Resume</h1>
+    <div class="resumes">
+        {% for item in resume %}
+            <div class="resume-item">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                <a href="{{ item.file.url }}" download>Download Resume</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
