@@ -4,7 +4,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Resume(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = RichTextUploadingField()
     file = models.FileField(upload_to='resumes/', blank=True, null=True)
 
     def save(self, *args, **kwargs):

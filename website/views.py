@@ -18,3 +18,4 @@ def contact_info(request):
     contact = ContactInfo.objects.all()
     context_contact = {'contact': contact}
     return render(request, 'contact_info_main_page.html', context_contact)
+

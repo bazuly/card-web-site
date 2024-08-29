@@ -1,17 +1,22 @@
-<!-- templates/resume_info_main_page.html -->
 {% extends 'index.html' %}
 
 {% block title %}Resume - My Portfolio{% endblock %}
 
 {% block content %}
-    <h1>Resume</h1>
-    <div class="resumes">
-        {% for item in resume %}
-            <div class="resume-item">
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.description }}</p>
-                <a href="{{ item.file.url }}" download>Download Resume</a>
-            </div>
-        {% endfor %}
+    <div class="container">
+        <h1 class="text-center">My Resume</h1>
+        <div class="row">
+            {% for item in resume %}
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <p class="card-text">{{ item.description | safe }}</p>
+                            <a href="{{ item.file.url }}" download class="btn btn-primary">Download Resume</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
