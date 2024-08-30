@@ -1,9 +1,13 @@
 from pathlib import Path
 import os
+import dotenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-$pc21^3nolext&%(dtc2u7xn_$ksr#+33=g^w8i$@44nijr16c'
+SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
 DEBUG = True
 
@@ -56,10 +60,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cardWebSite.wsgi.application'
 
+# database settings
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT'),
     }
 }
 
