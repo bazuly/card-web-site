@@ -14,7 +14,7 @@ services:
 
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 cardWebSite.wsgi:application --workers 4 --timeout 120
+    command: gunicorn --bind 0.0.0.0:8000 cardWebSite.wsgi:application --workers 4
     env_file:
       - .env
     environment:
@@ -41,7 +41,7 @@ services:
     depends_on:
       - web
     networks:
-      - backend
+      - backend                                       
 volumes:
   # postgres_data:
   static-data:

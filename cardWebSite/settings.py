@@ -31,12 +31,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'cardWebSite.urls'
@@ -103,15 +105,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+# static settings 
 STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/app/staticfiles/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # media settings
 MEDIA_URL = '/media/'
@@ -135,3 +138,6 @@ CKEDITOR_CONFIGS = {
 CKEDITOR_UPLOAD_PATH = "uploads_ckeditor/"
 
 CKEDITOR_IMAGE_BACKEND = "pillow"
+
+# Сжатие статических файлов в админке
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
